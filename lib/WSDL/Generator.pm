@@ -35,8 +35,9 @@ use Class::Hook;
 use WSDL::Generator::Schema;
 use WSDL::Generator::Binding;
 use base    qw(WSDL::Generator::Base);
+use 5.6.0;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =pod
 
@@ -185,6 +186,8 @@ sub _after {
 
 =head1 CAVEATS
 
+WSDL doesn't works only on perl 5.6 and not 5.8. UNIVERSAL::AUTOLOAD is broken in perl 5.8 and it is used by Class::Hook upon wich WSDL::Generator depends.
+
 WSDL is very flexible since it can describe any kind of data structure in a language non dependant description.
 But that flexibility makes certain things difficult, such as array of inconsistant data types.
 So, here is the current limitation of WSDL::Generator :
@@ -254,7 +257,7 @@ I hope these limitations will be lifted in the future.
 
 =head1 BUGS
 
-  This is an alpha release, so don't expect miracles and don't use it without caution - you've been warned!
+  This is till n alpha release, so don't expect miracles and don't use it without caution - you've been warned!
   Feel free to send me your bug reports, contribution and comments about this project.
 
 =head1 SEE ALSO
@@ -269,6 +272,8 @@ A lot of thanks to:
 
   Paul Kulchenko for his fantastic SOAP::Lite module and his help
   Patrick Morris, a Delphi wizard, for testing the wsdl generated and investing weird things
+  Joe Breeden for his excellent documentation
+  Yuval Mazor for his patch to make it compatible with .net wsdl compiler
   Leon Brocard for his code review
   James Duncan for his support
 

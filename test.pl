@@ -26,11 +26,13 @@ my $test = WSDLTest->new($param);
 $test->test1('hello');
 $test->test2('world');
 my $result = $wsdl->get('WSDLTest');
-
-local $/ = undef;
-open  WSDL, 'WSDLTest.wsdl';
-my $result_ref = <WSDL>;
-close WSDL;
+my $result_ref;
+{
+	local $/ = undef;
+	open  WSDL, 'WSDLTest.wsdl';
+	$result_ref = <WSDL>;
+	close WSDL;
+}
 
 ok($result eq $result_ref, 'WSDL generation');
 my @classes = $wsdl->get_all;

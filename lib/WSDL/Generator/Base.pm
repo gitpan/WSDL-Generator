@@ -18,29 +18,29 @@ use Carp;
 our $VERSION = '0.01';
 
 our %WSDL = (
-			ELEMENT  => [ '<element minOccurs="[%min_occur%]" maxOccurs="[%max_occur%]" name="[%name%]" type="[%type%]" />' ],
-			ARRAYREF => [ '<element minOccurs="[%min_occur%]" maxOccurs="[%max_occur%]" name="[%name%]" wsdl:arrayType="[%type%][]" />' ],
+			ELEMENT  => [ '<xsd:element name="[%name%]" type="xsd:[%type%]" />' ],
+			ARRAYREF => [ '<xsd:element minOccurs="[%min_occur%]" maxOccurs="[%max_occur%]" name="[%name%]" wsdl:arrayType="xsd:[%type%][]" />' ],
 			HASHREF  =>	[
-			             '<complexType name="[%name%]">',
+			             '<xsd:complexType name="[%name%]">',
 				         	[
-				         	'<sequence>',
+				         	'<xsd:sequence>',
 				        		['@[%elements%]'],
-				        	'</sequence>',
+				        	'</xsd:sequence>',
 				        	],
-				         '</complexType>',
+				         '</xsd:complexType>',
 				        ],
 			TYPES =>	[
 							'<types>',
 							[
-								'<schema targetNamespace="[%schema_namesp%]" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema">',
+								'<xsd:schema targetNamespace="[%schema_namesp%]">',
 									['@[%schema%]'],
-					   			'</schema>',
+					   			'</xsd:schema>',
 					   		],
 						   '</types>',
 						],
 			MESSAGE  => [
 						   '<message name="[%methodRe%]">',
-								[ '<part name="msg" type="xsdl:[%type%]"/>' ],
+								[ '<part name="[%methodRe%]SoapMsg" element="xsdl:[%type%]"/>' ],
 						   '</message>',
 			            ],
 			PORTTYPE_OPERATION =>
@@ -60,12 +60,12 @@ our %WSDL = (
 						[
 						  '<operation name="[%method%]">',
 								[
-								  '<soap:operation soapAction=""/>',
+								  '<soap:operation style="document" soapAction=""/>',
 								  '<input>',
-									[ '<soap:body use="encoded" namespace="urn:[%definition_name%]" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>' ],
+									[ '<soap:body use="literal"/>' ],
 								  '</input>',
 								  '<output>',
-									[ '<soap:body use="encoded" namespace="urn:[%definition_name%]" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>' ],
+									[ '<soap:body use="literal"/>' ],
 								  '</output>',
 								],
 						  '</operation>',
@@ -74,7 +74,7 @@ our %WSDL = (
 			            [
 			              '<binding name="[%services%][%service_name%]Binding" type="tns:[%services%][%service_name%]PortType">',
 			              	[
-								'<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>',
+								'<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>',
 			              		['@[%binding_operation%]'],
 			              	],
 			              '</binding>',
@@ -98,7 +98,7 @@ our %WSDL = (
 						],
 			DEFINITIONS =>
 						[
-							'<definitions name="[%service_name%]" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="[%target_namesp%][%service_name%].wsdl" xmlns:tns="[%target_namesp%][%service_name%].wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsdl="[%schema_namesp%]">',
+							'<definitions name="[%service_name%]" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="[%target_namesp%]" xmlns:tns="[%target_namesp%]" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsdl="[%schema_namesp%]">',
 								['@[%schema%]'],
 								['@[%message%]'],
 								['@[%porttype%]'],

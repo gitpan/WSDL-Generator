@@ -1,23 +1,13 @@
-=pod
-
-=head1 NAME
-
-	WSDLTest - A class to test WSDL::Generator
-
-=cut
-
+# WSDLTest - A class to test WSDL::Generator
 package WSDLTest;
 
-=pod
-
-=head2 new($param)
-
-	$param = { param1 => $something,
-	           param2 => $somethingelse,
-	         };
-	Returns a SoapTest object
-
-=cut
+# new($param)
+#
+#	$param = { param1 => $something,
+#	           param2 => $somethingelse,
+#	         };
+#	Returns a SoapTest object
+#
 sub new {
 	my $class = shift;
 	my $param = shift;
@@ -27,28 +17,22 @@ sub new {
 }
 
 
-=pod
-
-=head2 test1($msg)
-
-	Returns [ [$msg,1,2,3], [4,5], [6,7] ]
-
-=cut
+# test1($msg)
+#
+#	Returns [ [$msg,1,2,3], [4,5], [6,7] ]
+#
 sub test1 {
 		my ($self, $msg) = @_;
         return [ [$msg,1,2,3], [4,5], [6,7] ];
 }
 
-=pod
-
-=head2 test2($msg)
-
-	Returns { param1  => $something,
-	          param2  => $somethingelse,
-	          message => $msg
-	         };
-
-=cut
+# test2($msg)
+#
+#	Returns { param1  => $something,
+#	          param2  => $somethingelse,
+#	          message => $msg
+#	         };
+#
 sub test2 {
 	my $self = shift;
 	my $string = shift;

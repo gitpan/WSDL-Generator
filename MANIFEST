@@ -8,3 +8,4 @@ lib/WSDL/Generator/Base.pm
 test.pl
 WSDLTest.pm
 WSDLTest.wsdl
+HowTo-SOAPLite.txt
