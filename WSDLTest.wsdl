@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<definitions name="WSDLTest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.fotango.com/SOAP/WSDLTest.wsdl" xmlns:tns="http://www.fotango.com/SOAP/WSDLTest.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsdl="http://www.fotango.com/FotangoWSDLTest.xsd">
+	<types>
+		<schema targetNamespace="http://www.fotango.com/FotangoWSDLTest.xsd" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema">
+			<element minOccurs="1" maxOccurs="1" name="test1Request" type="string" />
+			<element minOccurs="1" maxOccurs="unbounded" name="myelement0" wsdl:arrayType="string[]" />
+			<element minOccurs="1" maxOccurs="unbounded" name="test1Response" wsdl:arrayType="xsdl:myelement0[]" />
+			<element minOccurs="1" maxOccurs="1" name="test2Request" type="string" />
+			<complexType name="myelement2">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="key1" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="key2" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="key3" type="string" />
+				</sequence>
+			</complexType>
+			<element minOccurs="1" maxOccurs="unbounded" name="myelement1" wsdl:arrayType="xsdl:myelement2[]" />
+			<complexType name="test2Response">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="message" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="param1" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="param2" type="xsdl:myelement1" />
+				</sequence>
+			</complexType>
+			<complexType name="myelement4">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="key1" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="key2" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="key3" type="string" />
+				</sequence>
+			</complexType>
+			<element minOccurs="1" maxOccurs="unbounded" name="myelement3" wsdl:arrayType="xsdl:myelement4[]" />
+			<complexType name="newRequest">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="param1" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="param2" type="xsdl:myelement3" />
+				</sequence>
+			</complexType>
+			<complexType name="myelement6">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="key1" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="key2" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="key3" type="string" />
+				</sequence>
+			</complexType>
+			<element minOccurs="1" maxOccurs="unbounded" name="myelement5" wsdl:arrayType="xsdl:myelement6[]" />
+			<complexType name="newResponse">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="param1" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="param2" type="xsdl:myelement5" />
+				</sequence>
+			</complexType>
+		</schema>
+	</types>
+	<message name="newRequest">
+		<part name="msg" type="xsdl:newRequest"/>
+	</message>
+	<message name="newResponse">
+		<part name="msg" type="xsdl:newResponse"/>
+	</message>
+	<message name="test1Request">
+		<part name="msg" type="xsdl:test1Request"/>
+	</message>
+	<message name="test1Response">
+		<part name="msg" type="xsdl:test1Response"/>
+	</message>
+	<message name="test2Request">
+		<part name="msg" type="xsdl:test2Request"/>
+	</message>
+	<message name="test2Response">
+		<part name="msg" type="xsdl:test2Response"/>
+	</message>
+	<portType name="FotangoWSDLTestPortType">
+		<operation name="new">
+			<input message="tns:newRequest" />
+			<output message="tns:newResponse" />
+		</operation>
+		<operation name="test1">
+			<input message="tns:test1Request" />
+			<output message="tns:test1Response" />
+		</operation>
+		<operation name="test2">
+			<input message="tns:test2Request" />
+			<output message="tns:test2Response" />
+		</operation>
+	</portType>
+	<binding name="FotangoWSDLTestBinding" type="tns:FotangoWSDLTestPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+			<operation name="new">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="encoded" namespace="urn:WSDLTest" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</input>
+				<output>
+					<soap:body use="encoded" namespace="urn:WSDLTest" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</output>
+			</operation>
+			<operation name="test1">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="encoded" namespace="urn:WSDLTest" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</input>
+				<output>
+					<soap:body use="encoded" namespace="urn:WSDLTest" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</output>
+			</operation>
+			<operation name="test2">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="encoded" namespace="urn:WSDLTest" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</input>
+				<output>
+					<soap:body use="encoded" namespace="urn:WSDLTest" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</output>
+			</operation>
+	</binding>
+	<service name="WSDLTest">
+		<documentation>
+			Test of WSDL::Generator
+		</documentation>
+		<port name="FotangoWSDLTestPort" binding="tns:FotangoWSDLTestBinding">
+			<soap:address location="http://pics.work-fotango.com/SOAP/WSDLTest"/>
+		</port>
+	</service>
+</definitions>
