@@ -4,7 +4,7 @@ NAME
 SYNOPSIS
       use WSDL::Generator;
       my $wsdl = WSDL::Generator->new($init);
-      Foo->a_method($param};
+      Foo->a_method($param);
       print $wsdl->get('Foo');
 
 DESCRIPTION
@@ -23,7 +23,6 @@ DESCRIPTION
 
 CONSTRUCTOR
   new($init)
-
       $init = {   'schema_namesp' => 'http://www.acmetravel.com/AcmeTravelServices.xsd',
                   'services'      => 'AcmeTravel',
                   'service_name'  => 'BookFlight',
@@ -34,26 +33,25 @@ CONSTRUCTOR
 
 METHODS
   get($class)
-
     Returns the WSDL code for a specific class
 
   get_all()
-
     Returns all classes available for a WSDL generation
 
   schema_namesp($value)
-
     Get or Set schema name space value
 
   service($value)
-
     Get or Set service name value
 
   services($value)
-
     Get or Set services name value
 
 CAVEATS
+    WSDL doesn't works only on perl 5.6 and not 5.8. UNIVERSAL::AUTOLOAD is
+    broken in perl 5.8 and it is used by Class::Hook upon wich
+    WSDL::Generator depends.
+
     WSDL is very flexible since it can describe any kind of data structure
     in a language non dependant description. But that flexibility makes
     certain things difficult, such as array of inconsistant data types. So,
@@ -123,7 +121,7 @@ CAVEATS
     I hope these limitations will be lifted in the future.
 
 BUGS
-      This is an alpha release, so don't expect miracles and don't use it without caution - you've been warned!
+      This is till n alpha release, so don't expect miracles and don't use it without caution - you've been warned!
       Feel free to send me your bug reports, contribution and comments about this project.
 
 SEE ALSO
@@ -136,14 +134,17 @@ ACKNOWLEDGEMENT
 
       Paul Kulchenko for his fantastic SOAP::Lite module and his help
       Patrick Morris, a Delphi wizard, for testing the wsdl generated and investing weird things
+      Joe Breeden for his excellent documentation
+      Yuval Mazor for his patch to make it compatible with .net wsdl compiler
       Leon Brocard for his code review
       James Duncan for his support
 
 AUTHOR
-    "Pierre Denis" <pdenis@fotango.com>
+    Pierre Denis, "<pierre@itrelease.net>".
 
 COPYRIGHT
-    Copyright (C) 2001, Fotango Ltd - All rights reserved. This is free
-    software. This software may be modified and/or distributed under the
-    same terms as Perl itself.
+    Copyright 2009, Pierre Denis, All Rights Reserved.
+
+    You may use, modify, and distribute this package under the same terms as
+    Perl itself.
 

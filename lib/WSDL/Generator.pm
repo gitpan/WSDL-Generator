@@ -8,7 +8,7 @@ WSDL::Generator - Generate wsdl file automagically
 
   use WSDL::Generator;
   my $wsdl = WSDL::Generator->new($init);
-  Foo->a_method($param};
+  Foo->a_method($param);
   print $wsdl->get('Foo');
 
 =head1 DESCRIPTION
@@ -37,7 +37,7 @@ use WSDL::Generator::Binding;
 use base    qw(WSDL::Generator::Base);
 use 5.6.0;
 
-our $VERSION = '0.02';
+our $VERSION = '0.04';
 
 =pod
 
@@ -279,11 +279,13 @@ A lot of thanks to:
 
 =head1 AUTHOR
 
-"Pierre Denis" <pdenis@fotango.com>
+Pierre Denis, C<< <pierre@itrelease.net> >>.
 
 =head1 COPYRIGHT
 
-Copyright (C) 2001, Fotango Ltd - All rights reserved.
-This is free software. This software may be modified and/or distributed under the same terms as Perl itself.
+Copyright 2009, Pierre Denis, All Rights Reserved.
+
+You may use, modify, and distribute this package under the
+same terms as Perl itself.
 
 =cut

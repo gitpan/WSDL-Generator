@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<definitions name="WSDLTest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.fotango.com/SOAP/" xmlns:tns="http://www.fotango.com/SOAP/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsdl="http://www.fotango.com/FotangoWSDLTest.xsd">
+<definitions name="WSDLTest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.itrelease.net/SOAP/" xmlns:tns="http://www.itrelease.net/SOAP/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsdl="http://www.itrelease.net/ITReleaseWSDLTest.xsd">
 	<types>
-		<xsd:schema targetNamespace="http://www.fotango.com/FotangoWSDLTest.xsd">
+		<xsd:schema targetNamespace="http://www.itrelease.net/ITReleaseWSDLTest.xsd">
 			<xsd:element name="test1Request" type="xsd:string" />
 			<xsd:element minOccurs="1" maxOccurs="unbounded" name="myelement0" wsdl:arrayType="xsd:string[]" />
 			<xsd:element minOccurs="1" maxOccurs="unbounded" name="test1Response" wsdl:arrayType="xsd:xsdl:myelement0[]" />
@@ -69,7 +69,7 @@
 	<message name="test2Response">
 		<part name="test2ResponseSoapMsg" element="xsdl:test2Response"/>
 	</message>
-	<portType name="FotangoWSDLTestPortType">
+	<portType name="ITReleaseWSDLTestPortType">
 		<operation name="new">
 			<input message="tns:newRequest" />
 			<output message="tns:newResponse" />
@@ -83,7 +83,7 @@
 			<output message="tns:test2Response" />
 		</operation>
 	</portType>
-	<binding name="FotangoWSDLTestBinding" type="tns:FotangoWSDLTestPortType">
+	<binding name="ITReleaseWSDLTestBinding" type="tns:ITReleaseWSDLTestPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 			<operation name="new">
 				<soap:operation style="document" soapAction=""/>
@@ -117,8 +117,8 @@
 		<documentation>
 			Test of WSDL::Generator
 		</documentation>
-		<port name="FotangoWSDLTestPort" binding="tns:FotangoWSDLTestBinding">
-			<soap:address location="http://pics.work-fotango.com/SOAP/WSDLTest"/>
+		<port name="ITReleaseWSDLTestPort" binding="tns:ITReleaseWSDLTestBinding">
+			<soap:address location="http://pics.work-itrelease.net/SOAP/WSDLTest"/>
 		</port>
 	</service>
 </definitions>

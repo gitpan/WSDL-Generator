@@ -9,3 +9,4 @@ test.pl
 WSDLTest.pm
 WSDLTest.wsdl
 HowTo-SOAPLite.txt
+META.yml                                 Module meta-data (added by MakeMaker)
